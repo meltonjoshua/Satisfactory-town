@@ -66,7 +66,7 @@ export class ProductionCalculator {
     }
 
     if ((building.powerProduction ?? 0) > 0) {
-      const production = building.powerProduction! * Math.pow(overclockPercent / 100, 1.6);
+      const production = building.powerProduction! * (overclockPercent / 100);
       return { consumption: 0, production };
     }
 
