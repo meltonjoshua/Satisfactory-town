@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --panel-bg: #111827;
+  --panel-border: #374151;
+  --accent-green: #22c55e;
+  --accent-yellow: #eab308;
+  --accent-red: #ef4444;
+}
+
+body {
+  background-color: #030712;
+  color: #f3f4f6;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
