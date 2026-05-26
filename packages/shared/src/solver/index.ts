@@ -1,7 +1,7 @@
-import { aRecipes } from "../data";
-import type { Recipe } from "../types";
-import { ProductionCalculator } from "../calculator";
-import type { RecipeNode } from "../calculator";
+import { aGameData } from '../data';
+import type { Recipe } from '../types';
+import { ProductionCalculator } from '../calculator';
+import type { RecipeNode } from '../calculator';
 
 export interface SolverOptions {
   targetItem: string;
@@ -27,7 +27,7 @@ export class RecipeSolver {
       excludedItems = [],
     } = options;
 
-    let recipes = options.availableRecipes ?? [...aRecipes];
+    let recipes = options.availableRecipes ?? [...aGameData.recipes];
 
     if (excludedItems.length > 0) {
       recipes = recipes.filter(
@@ -59,14 +59,8 @@ export class RecipeSolver {
   private static aggregateStats(
     node: RecipeNode
   ): { totalMachines: number; totalPower: number } {
-    let totalMachines = node.machinesNeeded ?? 0;
-    let totalPower = 0;
-
-    if (node.recipe && node.machinesNeeded) {
-      const building = ProductionCalculator.getBuildingForRecipe(node.recipe);
-      const powerBase = building?.powerConsumption ?? 0;
-      totalPower = node.machinesNeeded * powerBase;
-    }
+    let totalMachines = node.machineCount;
+    let totalPower = node.computedRates.power;
 
     for (const child of node.children) {
       const childStats = RecipeSolver.aggregateStats(child);
@@ -80,24 +74,19 @@ export class RecipeSolver {
   private static formatSummary(tree: RecipeNode, totalMachines: number, totalPower: number): string {
     const lines: string[] = [];
     RecipeSolver.formatTree(tree, 0, lines);
-    lines.push("");
+    lines.push('');
     lines.push(`Total machines: ${totalMachines.toFixed(2)}`);
     lines.push(`Total power: ${totalPower.toFixed(2)} MW`);
-    return lines.join("\n");
+    return lines.join('\n');
   }
 
   private static formatTree(node: RecipeNode, depth: number, lines: string[]): void {
-    const indent = "  ".repeat(depth);
-    const rateStr = node.rate.toFixed(2);
-    const machinesStr = node.machinesNeeded ? ` (${node.machinesNeeded.toFixed(2)} ${node.recipe?.machineType ?? "machines"})` : "";
-    const recipeStr = node.recipe ? ` via ${node.recipe.name}` : "";
-    const circularStr = node.isCircular ? " [CIRCULAR]" : "";
+    const indent = '  '.repeat(depth);
+    const rateStr = node.computedRates.outputs[0]?.rate.toFixed(2) ?? '0.00';
+    const machinesStr = ` (${node.machineCount.toFixed(2)} ${node.recipe.machineType})`;
+    const recipeStr = ` via ${node.recipe.name}`;
 
-    if (!node.recipe && node.children.length === 0) {
-      lines.push(`${indent}${node.item}: ${rateStr}/min (raw input)`);
-    } else {
-      lines.push(`${indent}${node.item}: ${rateStr}/min${recipeStr}${machinesStr}${circularStr}`);
-    }
+    lines.push(`${indent}${node.recipe.products[0].item}: ${rateStr}/min${recipeStr}${machinesStr}`);
 
     for (const child of node.children) {
       RecipeSolver.formatTree(child, depth + 1, lines);
