@@ -63,6 +63,15 @@
     "isAlternate": true
   },
   {
+    "id": "cast-screw",
+    "name": "Cast Screw",
+    "ingredients": [{ "item": "iron-ingot", "amount": 1 }],
+    "products": [{ "item": "screw", "amount": 4 }],
+    "manufacturingDuration": 6,
+    "machineType": "constructor",
+    "isAlternate": true
+  },
+  {
     "id": "modular-frame",
     "name": "Modular Frame",
     "ingredients": [{ "item": "reinforced-iron-plate", "amount": 3 }, { "item": "iron-rod", "amount": 12 }],

@@ -1,5 +1,5 @@
-import type { Recipe, Building } from "../types";
-import { aBuildings, aRecipes } from "../data";
+import type { Recipe, Building } from '../types';
+import { aBuildings, aRecipes, aGameData } from '../data';
 
 export interface RateResult {
   item: string;
@@ -45,7 +45,7 @@ export class ProductionCalculator {
       rate: (prod.amount / cycleTime) * machineCount,
     }));
 
-    const waterInput = recipe.ingredients.find((i) => i.item === "water");
+    const waterInput = recipe.ingredients.find((i) => i.item === 'water');
     const water = waterInput ? (waterInput.amount / cycleTime) * machineCount : 0;
 
     const matchingBuilding = ProductionCalculator.getBuildingForRecipe(recipe);
@@ -53,6 +53,25 @@ export class ProductionCalculator {
     const power = machineCount * powerBase * Math.pow(overclockFactor, 1.6);
 
     return { inputs, outputs, power, water };
+  }
+
+  static computePowerForBuilding(
+    buildingId: string,
+    recipeId: string | null,
+    overclockPercent: number
+  ): { consumption: number; production: number } {
+    const building = aGameData.buildings.find((b) => b.id === buildingId);
+    if (!building) {
+      return { consumption: 0, production: 0 };
+    }
+
+    if ((building.powerProduction ?? 0) > 0) {
+      const production = building.powerProduction! * Math.pow(overclockPercent / 100, 1.6);
+      return { consumption: 0, production };
+    }
+
+    const consumption = (building.powerConsumption ?? 0) * Math.pow(overclockPercent / 100, 1.6);
+    return { consumption, production: 0 };
   }
 
   static getBuildingForRecipe(recipe: Recipe): Building | undefined {

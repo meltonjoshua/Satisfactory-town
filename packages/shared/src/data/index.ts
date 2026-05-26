@@ -1,8 +1,8 @@
-import itemsData from "./raw/items.json";
-import buildingsData from "./raw/buildings.json";
-import recipesData from "./raw/recipes.json";
-import { ItemSchema, BuildingSchema, RecipeSchema } from "../types";
-import type { Item, Building, Recipe } from "../types";
+import itemsData from './raw/items.json';
+import buildingsData from './raw/buildings.json';
+import recipesData from './raw/recipes.json';
+import { ItemSchema, BuildingSchema, RecipeSchema } from '../types';
+import type { Item, Building, Recipe } from '../types';
 
 export const aItems: Item[] = itemsData.map((item) => ItemSchema.parse(item));
 export const aBuildings: Building[] = buildingsData.map((b) => BuildingSchema.parse(b));
@@ -36,10 +36,10 @@ export function getItemsProducibleByRecipes(): Item[] {
 }
 
 export const RESOURCE_CONSTRAINTS = [
-  { id: "no-sulfur", label: "I have no Sulfur", excludedItems: ["sulfur"] },
-  { id: "no-coal", label: "I have no Coal", excludedItems: ["coal"] },
-  { id: "no-limestone", label: "I have no Limestone", excludedItems: ["limestone"] },
-  { id: "no-water", label: "I have no Water", excludedItems: ["water"] },
+  { id: 'no-sulfur', label: 'I have no Sulfur', excludedItems: ['sulfur'] },
+  { id: 'no-coal', label: 'I have no Coal', excludedItems: ['coal'] },
+  { id: 'no-limestone', label: 'I have no Limestone', excludedItems: ['limestone'] },
+  { id: 'no-water', label: 'I have no Water', excludedItems: ['water'] },
 ] as const;
 
 export type ResourceConstraint = (typeof RESOURCE_CONSTRAINTS)[number];

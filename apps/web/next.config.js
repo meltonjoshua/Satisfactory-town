@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@satisfactory-planner/shared"],
+  reactStrictMode: true,
+  transpilePackages: ['@satisfactory-planner/shared'],
 };
 
 module.exports = nextConfig;
