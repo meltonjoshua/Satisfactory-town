@@ -51,14 +51,16 @@ interface ProductionTreeProps {
   tree: RecipeNode;
   totalMachines: number;
   totalPower: number;
+  totalWater?: number;
+  totalFootprint?: number;
 }
 
-export default function ProductionTree({ tree, totalMachines, totalPower }: ProductionTreeProps) {
+export default function ProductionTree({ tree, totalMachines, totalPower, totalWater, totalFootprint }: ProductionTreeProps) {
   const rootItem = getItemById(tree.item);
 
   return (
     <div className="space-y-4">
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-wrap">
         <div className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2">
           <span className="text-gray-400 text-xs block">Total Machines</span>
           <span className="text-xl font-bold text-amber-400">{totalMachines.toFixed(2)}</span>
@@ -67,6 +69,18 @@ export default function ProductionTree({ tree, totalMachines, totalPower }: Prod
           <span className="text-gray-400 text-xs block">Total Power</span>
           <span className="text-xl font-bold text-amber-400">{totalPower.toFixed(2)} MW</span>
         </div>
+        {totalWater != null && totalWater > 0 && (
+          <div className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2">
+            <span className="text-gray-400 text-xs block">Total Water</span>
+            <span className="text-xl font-bold text-amber-400">{totalWater.toFixed(2)} m³/min</span>
+          </div>
+        )}
+        {totalFootprint != null && totalFootprint > 0 && (
+          <div className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2">
+            <span className="text-gray-400 text-xs block">Total Footprint</span>
+            <span className="text-xl font-bold text-amber-400">{totalFootprint.toFixed(2)} tiles</span>
+          </div>
+        )}
       </div>
 
       <h3 className="text-lg font-semibold text-gray-200">

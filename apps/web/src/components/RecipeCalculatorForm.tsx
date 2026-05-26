@@ -1,12 +1,12 @@
 import { useState, useCallback } from "react";
-import { RecipeSolver, type SolverResult, aGameData, getItemsProducibleByRecipes, getAlternateRecipes, RESOURCE_CONSTRAINTS } from "@satisfactory-planner/shared";
+import { RecipeSolver, type SolverResult, type SolverOptions, aGameData, getItemsProducibleByRecipes, getAlternateRecipes, RESOURCE_CONSTRAINTS } from "@satisfactory-planner/shared";
 import { type CalculatorFormState, validateForm } from "../hooks/useCalculatorForm";
 
 const producibleItems = getItemsProducibleByRecipes();
 const alternateRecipes = getAlternateRecipes();
 
 export interface RecipeCalculatorFormProps {
-  onSolve: (result: SolverResult) => void;
+  onSolve: (result: SolverResult, options: SolverOptions) => void;
 }
 
 export default function RecipeCalculatorForm({ onSolve }: RecipeCalculatorFormProps) {
@@ -56,21 +56,20 @@ export default function RecipeCalculatorForm({ onSolve }: RecipeCalculatorFormPr
 
       setIsSolving(true);
       try {
-        const constraint = RESOURCE_CONSTRAINTS.find((c) =>
-          form.excludedResources.includes(c.id)
-        );
         const excludedItems = form.excludedResources.flatMap((rId) => {
           const constraint = RESOURCE_CONSTRAINTS.find((c) => c.id === rId);
           return constraint ? [...constraint.excludedItems] : [];
         });
 
-        const result = RecipeSolver.solve({
+        const options: SolverOptions = {
           targetItem: form.targetItem,
           targetRate: form.targetRate,
           preferredAlts: form.preferredAlts,
           excludedItems,
-        });
-        onSolve(result);
+        };
+
+        const result = RecipeSolver.solve(options);
+        onSolve(result, options);
       } finally {
         setIsSolving(false);
       }
