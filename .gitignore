@@ -4,3 +4,5 @@ dist
 .turbo
 build
 *.tsbuildinfo
+.env
+.env.local

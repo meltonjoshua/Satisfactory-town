@@ -2,145 +2,177 @@
   {
     "id": "iron-ingot",
     "name": "Iron Ingot",
-    "ingredients": [{ "item": "iron-ore", "amount": 1 }],
-    "products": [{ "item": "iron-ingot", "amount": 1 }],
-    "manufacturingDuration": 2,
+    "ingredients": [{ "item": "iron-ore", "rate": 30.0 }],
+    "products": [{ "item": "iron-ingot", "rate": 30.0 }],
+    "manufacturingDuration": 4.0,
     "machineType": "smelter",
     "isAlternate": false
   },
   {
-    "id": "pure-iron-ingot",
-    "name": "Pure Iron Ingot",
-    "ingredients": [{ "item": "iron-ore", "amount": 7 }, { "item": "water", "amount": 4 }],
-    "products": [{ "item": "iron-ingot", "amount": 13 }],
-    "manufacturingDuration": 12,
-    "machineType": "refinery",
-    "isAlternate": true
-  },
-  {
     "id": "iron-plate",
     "name": "Iron Plate",
-    "ingredients": [{ "item": "iron-ingot", "amount": 3 }],
-    "products": [{ "item": "iron-plate", "amount": 2 }],
-    "manufacturingDuration": 6,
+    "ingredients": [{ "item": "iron-ingot", "rate": 30.0 }],
+    "products": [{ "item": "iron-plate", "rate": 20.0 }],
+    "manufacturingDuration": 6.0,
     "machineType": "constructor",
     "isAlternate": false
   },
   {
     "id": "iron-rod",
     "name": "Iron Rod",
-    "ingredients": [{ "item": "iron-ingot", "amount": 1 }],
-    "products": [{ "item": "iron-rod", "amount": 1 }],
-    "manufacturingDuration": 4,
+    "ingredients": [{ "item": "iron-ingot", "rate": 15.0 }],
+    "products": [{ "item": "iron-rod", "rate": 15.0 }],
+    "manufacturingDuration": 4.0,
     "machineType": "constructor",
     "isAlternate": false
   },
   {
     "id": "screw",
     "name": "Screw",
-    "ingredients": [{ "item": "iron-rod", "amount": 1 }],
-    "products": [{ "item": "screw", "amount": 4 }],
-    "manufacturingDuration": 6,
+    "ingredients": [{ "item": "iron-rod", "rate": 10.0 }],
+    "products": [{ "item": "screw", "rate": 40.0 }],
+    "manufacturingDuration": 6.0,
     "machineType": "constructor",
     "isAlternate": false
   },
   {
     "id": "reinforced-iron-plate",
     "name": "Reinforced Iron Plate",
-    "ingredients": [{ "item": "iron-plate", "amount": 6 }, { "item": "screw", "amount": 12 }],
-    "products": [{ "item": "reinforced-iron-plate", "amount": 1 }],
-    "manufacturingDuration": 12,
+    "ingredients": [
+      { "item": "iron-plate", "rate": 30.0 },
+      { "item": "screw", "rate": 60.0 }
+    ],
+    "products": [{ "item": "reinforced-iron-plate", "rate": 5.0 }],
+    "manufacturingDuration": 12.0,
     "machineType": "assembler",
     "isAlternate": false
   },
   {
-    "id": "stitched-iron-plate",
-    "name": "Stitched Iron Plate",
-    "ingredients": [{ "item": "iron-plate", "amount": 10 }, { "item": "wire", "amount": 20 }],
-    "products": [{ "item": "reinforced-iron-plate", "amount": 3 }],
-    "manufacturingDuration": 16,
-    "machineType": "assembler",
-    "isAlternate": true
-  },
-  {
     "id": "modular-frame",
     "name": "Modular Frame",
-    "ingredients": [{ "item": "reinforced-iron-plate", "amount": 3 }, { "item": "iron-rod", "amount": 12 }],
-    "products": [{ "item": "modular-frame", "amount": 2 }],
-    "manufacturingDuration": 60,
+    "ingredients": [
+      { "item": "reinforced-iron-plate", "rate": 7.5 },
+      { "item": "iron-rod", "rate": 15.0 }
+    ],
+    "products": [{ "item": "modular-frame", "rate": 2.5 }],
+    "manufacturingDuration": 60.0,
     "machineType": "assembler",
     "isAlternate": false
   },
   {
     "id": "rotor",
     "name": "Rotor",
-    "ingredients": [{ "item": "iron-rod", "amount": 5 }, { "item": "screw", "amount": 25 }],
-    "products": [{ "item": "rotor", "amount": 1 }],
-    "manufacturingDuration": 15,
+    "ingredients": [
+      { "item": "iron-rod", "rate": 20.0 },
+      { "item": "screw", "rate": 100.0 }
+    ],
+    "products": [{ "item": "rotor", "rate": 4.0 }],
+    "manufacturingDuration": 15.0,
     "machineType": "assembler",
     "isAlternate": false
   },
   {
     "id": "smart-plating",
     "name": "Smart Plating",
-    "ingredients": [{ "item": "reinforced-iron-plate", "amount": 1 }, { "item": "rotor", "amount": 1 }],
-    "products": [{ "item": "smart-plating", "amount": 1 }],
-    "manufacturingDuration": 30,
+    "ingredients": [
+      { "item": "reinforced-iron-plate", "rate": 2.5 },
+      { "item": "rotor", "rate": 2.5 }
+    ],
+    "products": [{ "item": "smart-plating", "rate": 2.0 }],
+    "manufacturingDuration": 30.0,
     "machineType": "assembler",
     "isAlternate": false
   },
   {
     "id": "copper-ingot",
     "name": "Copper Ingot",
-    "ingredients": [{ "item": "copper-ore", "amount": 1 }],
-    "products": [{ "item": "copper-ingot", "amount": 1 }],
-    "manufacturingDuration": 2,
+    "ingredients": [{ "item": "copper-ore", "rate": 30.0 }],
+    "products": [{ "item": "copper-ingot", "rate": 30.0 }],
+    "manufacturingDuration": 4.0,
     "machineType": "smelter",
     "isAlternate": false
   },
   {
     "id": "copper-sheet",
     "name": "Copper Sheet",
-    "ingredients": [{ "item": "copper-ingot", "amount": 2 }],
-    "products": [{ "item": "copper-sheet", "amount": 1 }],
-    "manufacturingDuration": 6,
+    "ingredients": [{ "item": "copper-ingot", "rate": 20.0 }],
+    "products": [{ "item": "copper-sheet", "rate": 10.0 }],
+    "manufacturingDuration": 6.0,
     "machineType": "constructor",
     "isAlternate": false
   },
   {
     "id": "wire",
     "name": "Wire",
-    "ingredients": [{ "item": "copper-ingot", "amount": 1 }],
-    "products": [{ "item": "wire", "amount": 2 }],
-    "manufacturingDuration": 4,
+    "ingredients": [{ "item": "copper-ingot", "rate": 15.0 }],
+    "products": [{ "item": "wire", "rate": 30.0 }],
+    "manufacturingDuration": 4.0,
     "machineType": "constructor",
     "isAlternate": false
   },
   {
     "id": "cable",
     "name": "Cable",
-    "ingredients": [{ "item": "wire", "amount": 2 }],
-    "products": [{ "item": "cable", "amount": 1 }],
-    "manufacturingDuration": 2,
+    "ingredients": [{ "item": "wire", "rate": 20.0 }],
+    "products": [{ "item": "cable", "rate": 10.0 }],
+    "manufacturingDuration": 2.0,
     "machineType": "constructor",
     "isAlternate": false
   },
   {
     "id": "concrete",
     "name": "Concrete",
-    "ingredients": [{ "item": "limestone", "amount": 3 }],
-    "products": [{ "item": "concrete", "amount": 1 }],
-    "manufacturingDuration": 4,
+    "ingredients": [
+      { "item": "limestone", "rate": 45.0 }
+    ],
+    "products": [{ "item": "concrete", "rate": 15.0 }],
+    "manufacturingDuration": 4.0,
     "machineType": "constructor",
     "isAlternate": false
   },
   {
     "id": "steel-ingot",
     "name": "Steel Ingot",
-    "ingredients": [{ "item": "iron-ore", "amount": 3 }, { "item": "coal", "amount": 3 }],
-    "products": [{ "item": "steel-ingot", "amount": 3 }],
-    "manufacturingDuration": 4,
+    "ingredients": [
+      { "item": "iron-ore", "rate": 45.0 },
+      { "item": "coal", "rate": 45.0 }
+    ],
+    "products": [{ "item": "steel-ingot", "rate": 45.0 }],
+    "manufacturingDuration": 4.0,
     "machineType": "foundry",
     "isAlternate": false
+  },
+  {
+    "id": "pure-iron-ingot",
+    "name": "Pure Iron Ingot",
+    "ingredients": [
+      { "item": "iron-ore", "rate": 35.0 },
+      { "item": "water", "rate": 6.0 }
+    ],
+    "products": [{ "item": "iron-ingot", "rate": 65.0 }],
+    "manufacturingDuration": 12.0,
+    "machineType": "refinery",
+    "isAlternate": true
+  },
+  {
+    "id": "stitched-iron-plate",
+    "name": "Stitched Iron Plate",
+    "ingredients": [
+      { "item": "iron-plate", "rate": 10.0 },
+      { "item": "wire", "rate": 20.0 }
+    ],
+    "products": [{ "item": "reinforced-iron-plate", "rate": 7.5 }],
+    "manufacturingDuration": 16.0,
+    "machineType": "assembler",
+    "isAlternate": true
+  },
+  {
+    "id": "cast-screw",
+    "name": "Cast Screw",
+    "ingredients": [{ "item": "iron-ingot", "rate": 5.0 }],
+    "products": [{ "item": "screw", "rate": 20.0 }],
+    "manufacturingDuration": 6.0,
+    "machineType": "constructor",
+    "isAlternate": true
   }
 ]

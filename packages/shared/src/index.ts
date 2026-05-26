@@ -1,5 +1,30 @@
-export { type Item, type Building, type Recipe, type ResourceNode, type RecipeIngredient, type RecipeProduct } from "./types";
-export { ItemSchema, BuildingSchema, RecipeSchema, ResourceNodeSchema } from "./types";
-export { aGameData, aItems, aBuildings, aRecipes, RESOURCE_CONSTRAINTS, getItemById, getRecipesProducing, getRecipesConsuming, getAlternateRecipes, getItemsProducibleByRecipes } from "./data";
-export { ProductionCalculator, type RecipeNode, type RateResult, type ComputeRatesResult } from "./calculator";
-export { RecipeSolver, type SolverOptions, type SolverResult } from "./solver";
+export { ProductionCalculator } from './calculator';
+export type { ComputedRates, RecipeNode } from './calculator';
+
+export { aGameData, aItems, aBuildings, aRecipes, getItems, getBuildings, getRecipes, getItemById, getRecipesProducing, getRecipesConsuming, getAlternateRecipes, getItemsProducibleByRecipes, RESOURCE_CONSTRAINTS } from './data';
+export type { ResourceConstraint } from './data';
+
+export {
+  ItemSchema,
+  BuildingSchema,
+  RecipeSchema,
+  RecipeIngredientSchema,
+  ResourceNodeSchema,
+  BuildingCategory,
+} from './types';
+
+export type {
+  Item,
+  Building,
+  Recipe,
+  RecipeIngredient,
+  ResourceNode,
+  BuildingCategoryType,
+  PlacedBuilding,
+  Connection,
+  PowerEntry,
+  PowerBalance,
+  FluidFlowEntry,
+  FluidGroupBalance,
+  FluidBalance,
+} from './types';
