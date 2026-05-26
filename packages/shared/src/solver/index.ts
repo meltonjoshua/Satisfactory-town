@@ -164,9 +164,11 @@ export class RecipeSolver {
       groups = groups.slice(0, 8);
     }
 
+    const MAX_COMBINATIONS = 256;
     const results: Recipe[][] = [];
 
     function backtrack(index: number, current: Recipe[]) {
+      if (results.length >= MAX_COMBINATIONS) return;
       if (index === groups.length) {
         results.push([...current]);
         return;
@@ -175,6 +177,7 @@ export class RecipeSolver {
         current.push(alt);
         backtrack(index + 1, current);
         current.pop();
+        if (results.length >= MAX_COMBINATIONS) return;
       }
     }
 

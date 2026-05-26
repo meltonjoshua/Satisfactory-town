@@ -60,7 +60,7 @@ export default function ComparisonTable({
           <tbody>
             {entries.map((entry) => {
               const isSelected =
-                JSON.stringify(entry.recipeIds.sort()) ===
+                JSON.stringify([...entry.recipeIds].sort()) ===
                 JSON.stringify([...selectedRecipeIds].sort());
               const isBestMachines =
                 bestMachines != null && entry.result.totalMachines === bestMachines;
